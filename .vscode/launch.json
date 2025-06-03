@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Debug Push_Swap",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/home/ari/Escritorio/push_swap/src/test_parse",
+            "args": ["2", "3", "1"], // Puedes poner los argumentos de prueba aquí
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Compilar con Makefile",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "externalConsole": false
+        }
+    ]
+}
+
