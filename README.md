@@ -44,3 +44,42 @@ ESTRATEGIAS
 - Para 5 números: usa el más pequeño, pásalo a B, ordena los 3, vuelve a A.
 - Para muchos números: adapta un algoritmo como RADIX SORT, usando el índice de cada número en la lista
 ordenada (normalización).
+
+## Pruebas de ejemplo
+A continuacion se muestran algunos comandos que puedes lanzar para verificar tu programa:
+
+1. **Entrada simple**:
+   ```bash
+   ./push_swap 2 1 3
+   ```
+   Deberia imprimir una secuencia de operaciones que ordene `2 1 3`.
+
+2. **Argumento unico con espacios**:
+   ```bash
+   ./push_swap "3 2 1"
+   ```
+   Comprueba que el parser maneje los espacios correctamente.
+
+3. **Numeros repetidos**:
+   ```bash
+   ./push_swap 1 1
+   ```
+   Debe mostrar `Error` porque no se permiten duplicados.
+
+4. **Valores no numericos**:
+   ```bash
+   ./push_swap 4 a 2
+   ```
+   Tambien debe imprimir `Error`.
+
+5. **Lista ya ordenada**:
+   ```bash
+   ./push_swap 1 2 3 4 5
+   ```
+   El programa no deberia imprimir ninguna operacion.
+
+6. **Prueba aleatoria grande (100 valores)**:
+   ```bash
+   seq 100 | sort -R | xargs ./push_swap
+   ```
+   Comprueba que la salida no sea excesiva y el programa termina.
