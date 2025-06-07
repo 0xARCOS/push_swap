@@ -1,2 +1,6 @@
 /tests/parser_test
 /tests/__pycache__/
+
+# Exclude binaries and precompiled headers
+/src/test_parse
+/include/push_swap.h.gch
