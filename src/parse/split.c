@@ -64,7 +64,7 @@ char    **ft_split(const char *s, char c)
     {
         if (s[i] != c && start < 0 )
             start = i;
-        else if ((s[i] == c || s[i + 1] == '\0') && start >= 0)
+        if ((s[i] == c || s[i + 1] == '\0') && start >= 0)
         {
             if (s[i] == c)
                 len = i - start;
