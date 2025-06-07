@@ -1,9 +1,5 @@
 #include "push_swap.h"
-#include <limits.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 int main(int argc, char **argv)
 {
