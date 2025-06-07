@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC_DIR := src
-SRCS := $(wildcard $(SRC_DIR)/*.c)
+SRCS := $(wildcard $(SRC_DIR)/*.c $(SRC_DIR)/parse/*.c $(SRC_DIR)/movements/*.c $(SRC_DIR)/algorithm/*.c)
 OBJS := $(SRCS:.c=.o)
 INC := -Iinclude
 

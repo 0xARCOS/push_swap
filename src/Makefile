@@ -6,12 +6,13 @@ INCLUDES = -I../include
 
 SRC = \
 main.c \
-parser.c \
-operations.c \
-split.c \
-string_utils.c \
-free_utils.c \
-atoi_utils.c
+parse/parser.c \
+parse/split.c \
+parse/string_utils.c \
+parse/free_utils.c \
+parse/atoi_utils.c \
+movements/operations.c \
+algorithm/sort.c
 
 OBJ = $(SRC:.c=.o)
 

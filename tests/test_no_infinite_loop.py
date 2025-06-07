@@ -13,11 +13,11 @@ BIN = ROOT / 'tests' / 'parser_test'
 COMPILE_CMD = [
     'gcc',
     '-I', str(INC),
-    str(SRC / 'parser.c'),
-    str(SRC / 'split.c'),
-    str(SRC / 'string_utils.c'),
-    str(SRC / 'atoi_utils.c'),
-    str(SRC / 'free_utils.c'),
+    str(SRC / 'parse' / 'parser.c'),
+    str(SRC / 'parse' / 'split.c'),
+    str(SRC / 'parse' / 'string_utils.c'),
+    str(SRC / 'parse' / 'atoi_utils.c'),
+    str(SRC / 'parse' / 'free_utils.c'),
     str('tests/parser_test_main.c'),
     '-o', str(BIN)
 ]
