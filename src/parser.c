@@ -138,3 +138,50 @@ int has_duplicates(t_node *stack)
     }
     return 0;
 }
+
+/*
+ * Split all program arguments into a single array of numeric strings.
+ * Handles quoted arguments separated by spaces.
+ */
+char    **split_args(int argc, char **argv)
+{
+    char    **tokens;
+    char    **split;
+    int     total;
+    int     i;
+    int     j;
+    int     k;
+
+    total = count_all_tokens(argc, argv);
+    tokens = malloc(sizeof(char *) * (total + 1));
+    if (!tokens)
+        return (NULL);
+    i = 1;
+    k = 0;
+    while (i < argc)
+    {
+        split = ft_split(argv[i], ' ');
+        if (!split)
+        {
+            free_tokens(tokens, k);
+            return (NULL);
+        }
+        j = 0;
+        while (split[j])
+        {
+            tokens[k] = ft_strdup(split[j]);
+            if (!tokens[k])
+            {
+                free_split(split);
+                free_tokens(tokens, k);
+                return (NULL);
+            }
+            k++;
+            j++;
+        }
+        free_split(split);
+        i++;
+    }
+    tokens[k] = NULL;
+    return (tokens);
+}
