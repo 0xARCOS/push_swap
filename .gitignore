@@ -4,3 +4,4 @@
 # Exclude binaries and precompiled headers
 /src/test_parse
 /include/push_swap.h.gch
+/push_swap
