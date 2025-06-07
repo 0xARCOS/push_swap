@@ -5,13 +5,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'src'
+INC = ROOT / 'include'
 
 BIN = ROOT / 'tests' / 'parser_test'
 
 # Compile the test helper
 COMPILE_CMD = [
     'gcc',
-    '-I', str(SRC),
+    '-I', str(INC),
     str(SRC / 'parser.c'),
     str(SRC / 'split.c'),
     str(SRC / 'string_utils.c'),
