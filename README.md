@@ -7,7 +7,7 @@ se instrucciones para ordenarlos usando dos pilas (stack A y B) y un conjunto li
 REGLAS DEL JUEGO
 Debes implementar dos programas:
 1. push_swap: genera la secuencia de operaciones para ordenar.
-2. cheker (opcional, pero recomendado): verifica si una secuencia de operacione realmente ordena datos.
+2. checker (opcional, pero recomendado): verifica si una secuencia de operacione realmente ordena datos.
 
 REGLAS DE ORDENACIÓN
 Debes usar estas operaciones, cada una aplicada sobre la pila:
