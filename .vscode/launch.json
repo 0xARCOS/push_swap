@@ -6,7 +6,7 @@
             "name": "Debug Push_Swap",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/ari/Escritorio/push_swap/src/test_parse",
+            "program": "${workspaceFolder}/src/push_swap",
             "args": ["2", "3", "1"], // Puedes poner los argumentos de prueba aquí
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
