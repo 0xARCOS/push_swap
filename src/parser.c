@@ -130,9 +130,9 @@ int has_duplicates(t_node *stack)
         runner = current->next;
         while (runner)
         {
-            if (current->value == runner->value)
-                return 1;
-            runner = current->next;
+           if (current->value == runner->value)
+               return 1;
+            runner = runner->next;
         }
         current = current->next;
     }
