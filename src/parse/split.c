@@ -62,14 +62,11 @@ char    **ft_split(const char *s, char c)
         return (NULL);
     while (s[i])
     {
-        if (s[i] != c && start < 0 )
+        if (s[i] != c && start < 0)
             start = i;
-        else if ((s[i] == c || s[i + 1] == '\0') && start >= 0)
+        else if (s[i] == c && start >= 0)
         {
-            if (s[i] == c)
-                len = i - start;
-            else
-                len = i - start + 1;
+            len = i - start;
             result[k] = word_dup(s + start, len);
             if (!result[k])
             {
@@ -81,6 +78,18 @@ char    **ft_split(const char *s, char c)
         }
         i++;
     }
+    if (start >= 0)
+    {
+        len = i - start;
+        result[k] = word_dup(s + start, len);
+        if (!result[k])
+        {
+            free_all(result, k);
+            return NULL;
+        }
+        k++;
+    }
     result[k] = NULL;
     return result;
 }
+
