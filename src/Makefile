@@ -1,18 +1,28 @@
 # Variables
 NAME = push_swap
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
-SRC = main.c parser.c utils.c
+CC      = gcc
+CFLAGS  = -Wall -Wextra -Werror -g
+INCLUDES = -I../include
+
+SRC = \
+main.c \
+parser.c \
+operations.c \
+split.c \
+string_utils.c \
+free_utils.c \
+atoi_utils.c
+
 OBJ = $(SRC:.c=.o)
 
 # Reglas
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
