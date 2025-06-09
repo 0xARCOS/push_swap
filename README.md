@@ -31,10 +31,13 @@ push_swap/
 ├── Makefile
 ├── src/
 │   ├── main.c
-│   ├── parser.c
-│   ├── operations.c
-│   ├── sort_small.c
-│   └── sort_large.c
+│   ├── checker_main.c
+│   ├── parse/
+│   │   └── parser.c
+│   ├── movements/
+│   │   └── operations.c
+│   └── algorithm/
+│       └── sort.c
 └── include/
     └── push_swap.h
 
