@@ -8,7 +8,8 @@ SRCS := $(filter-out $(SRC_DIR)/checker_main.c, $(wildcard $(SRC_DIR)/*.c $(SRC_
 OBJS := $(SRCS:.c=.o)
 
 CHECKER_SRCS := $(SRC_DIR)/checker_main.c $(wildcard $(SRC_DIR)/parse/*.c) \
-    $(SRC_DIR)/algorithm/sort.c $(SRC_DIR)/movements/operations.c
+    $(SRC_DIR)/algorithm/sort.c $(SRC_DIR)/movements/operations.c \
+    $(SRC_DIR)/movements/operations_utils.c
 CHECKER_OBJS := $(CHECKER_SRCS:.c=.o)
 
 INC := -Iinclude
