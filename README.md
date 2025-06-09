@@ -45,6 +45,20 @@ ESTRATEGIAS
 - Para muchos números: adapta un algoritmo como RADIX SORT, usando el índice de cada número en la lista
 ordenada (normalización).
 
+
+## Compilación y uso
+Para compilar los binarios ejecuta:
+```bash
+make
+```
+Esto generará dos programas: `push_swap` y `checker`. Si deseas recompilar desde cero utiliza `make re`.
+
+Para ordenar una lista simplemente ejecuta `push_swap` seguido de los números:
+```bash
+./push_swap 3 2 1
+```
+Este comando mostrará una secuencia de operaciones por la salida estándar.
+
 ## Pruebas de ejemplo
 A continuacion se muestran algunos comandos que puedes lanzar para verificar tu programa:
 
@@ -83,3 +97,16 @@ A continuacion se muestran algunos comandos que puedes lanzar para verificar tu 
    seq 100 | sort -R | xargs ./push_swap
    ```
    Comprueba que la salida no sea excesiva y el programa termina.
+
+## Verificación con checker
+Una vez generada la secuencia de operaciones puedes validarla con `checker`:
+```bash
+./push_swap 3 1 2 | ./checker 3 1 2
+```
+Si la secuencia es correcta, se imprimirá `OK`; de lo contrario, `KO`.
+
+También puedes guardar las operaciones en un archivo y pasarlas por entrada estándar:
+```bash
+./push_swap 3 1 2 > ops.txt
+./checker 3 1 2 < ops.txt
+```
