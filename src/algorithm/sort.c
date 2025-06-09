@@ -128,31 +128,82 @@ static void sort_five(t_node **a, t_node **b)
         pa(a, b);
 }
 
-static void radix_sort(t_node **a, t_node **b)
+
+static int find_pos_by_index(t_node *stack, int index)
+{
+    int pos = 0;
+    while (stack)
+    {
+        if (stack->index == index)
+            return pos;
+        stack = stack->next;
+        pos++;
+    }
+    return -1;
+}
+
+static int find_max_index(t_node *stack)
+{
+    int max = stack->index;
+    while (stack)
+    {
+        if (stack->index > max)
+            max = stack->index;
+        stack = stack->next;
+    }
+    return max;
+}
+
+static void push_chunks(t_node **a, t_node **b, int chunk)
 {
     int size = stack_size(*a);
-    int max_bits = 0;
-    int i;
-    int j;
+    int pushed = 0;
+    int limit = chunk;
 
-    while ((size - 1) >> max_bits)
-        max_bits++;
-    i = 0;
-    while (i < max_bits)
+    while (pushed < size)
     {
-        j = 0;
-        while (j < size)
+        if ((*a)->index < limit)
         {
-            if (((*a)->index >> i) & 1)
-                ra(a);
-            else
-                pb(a, b);
-            j++;
+            pb(a, b);
+            pushed++;
+            if ((*b)->index >= limit - chunk / 2)
+                rb(b);
         }
-        while (*b)
-            pa(a, b);
-        i++;
+        else
+            ra(a);
+        if (pushed == limit && limit < size)
+            limit += chunk;
     }
+}
+
+static void push_back(t_node **a, t_node **b)
+{
+    int pos;
+    int max;
+    int size;
+
+    while (*b)
+    {
+        max = find_max_index(*b);
+        pos = find_pos_by_index(*b, max);
+        size = stack_size(*b);
+        if (pos <= size / 2)
+            while (pos-- > 0)
+                rb(b);
+        else
+            while (pos++ < size)
+                rrb(b);
+        pa(a, b);
+    }
+}
+
+static void chunk_sort(t_node **a, t_node **b, int chunks)
+{
+    int size = stack_size(*a);
+    int chunk = size / chunks + 1;
+
+    push_chunks(a, b, chunk);
+    push_back(a, b);
 }
 
 int is_sorted(t_node *stack)
@@ -185,7 +236,10 @@ void sort_stack(t_node **a, t_node **b)
     else
     {
         assign_indexes(*a);
-        radix_sort(a, b);
+        if (size <= 100)
+            chunk_sort(a, b, 5);
+        else
+            chunk_sort(a, b, 11);
     }
 }
 

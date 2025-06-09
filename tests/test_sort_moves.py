@@ -33,5 +33,6 @@ def test_five_specific():
 def test_hundred_reverse():
     numbers = [str(i) for i in range(100, 0, -1)]
     ops = run_push_swap(numbers)
-    assert len(ops) == 1084
+    # La nueva estrategia debe generar menos movimientos que la version anterior
+    assert len(ops) < 1084
 
