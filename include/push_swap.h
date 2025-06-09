@@ -40,6 +40,12 @@ void rra(t_node **a); // reverse rotate a
 void rrb(t_node **b); // reverse rotate b
 void rrr(t_node **a, t_node **b); // reverse rotate a y b
 
+/* ==================== UTILS ======================== */
+void    swap_nodes(t_node **stack);
+void    push_node(t_node **dst, t_node **src);
+void    rotate_nodes(t_node **stack);
+void    reverse_rotate_nodes(t_node **stack);
+
 /* ==================== ALGORITMO ==================== */
 int     is_sorted(t_node *stack);
 void    sort_stack(t_node **a, t_node **b);
