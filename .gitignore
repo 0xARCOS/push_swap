@@ -5,3 +5,5 @@
 /src/test_parse
 /include/push_swap.h.gch
 /push_swap
+/checker
+*.o
