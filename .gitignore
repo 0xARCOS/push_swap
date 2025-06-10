@@ -1,5 +1,5 @@
-/tests/parser_test
-/tests/__pycache__/
+/test/tests/parser_test
+/test/tests/__pycache__/
 
 # Exclude binaries and precompiled headers
 /src/test_parse
