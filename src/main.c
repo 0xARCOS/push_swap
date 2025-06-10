@@ -1,6 +1,22 @@
 #include "push_swap.h"
 #include <unistd.h>
 
+static int has_only_spaces(const char *s)
+{
+    int i;
+
+    if (!s)
+        return (1);
+    i = 0;
+    while (s[i])
+    {
+        if (s[i] != ' ' && s[i] != '\t')
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 int main(int argc, char **argv)
 {
     t_node      *stack_a;
@@ -11,6 +27,17 @@ int main(int argc, char **argv)
 
     if (argc < 2)
         return (0); // no hay números a ordenar
+
+    int i = 1;
+    while (i < argc)
+    {
+        if (has_only_spaces(argv[i]))
+        {
+            write(2, "Error\n", 6);
+            return 1;
+        }
+        i++;
+    }
 
     stack_a = parse_input(argc, argv);
     if (!stack_a)
