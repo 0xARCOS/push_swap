@@ -16,7 +16,7 @@ int	count_all_tokens(int argc, char **argv)
 {
 	int		i;
 	int		count;
-	char		**split;
+	char	**split;
 	int		j;
 
 	i = 1;
@@ -41,14 +41,11 @@ int	is_valid_number(const char *str)
 
 	if (!str || !str[0])
 		return (0);
-
 	i = 0;
 	if (str[0] == '-' || str[0] == '+')
 		i++;
-
 	if (!str[i])
 		return (0);
-
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
