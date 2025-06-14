@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include <unistd.h>
+
 static int	has_only_spaces(const char *s)
 {
 	int	i;
