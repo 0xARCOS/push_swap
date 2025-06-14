@@ -60,7 +60,7 @@ void	sort_three(t_node **a)
 	}
 	else if (first < second && second > third && first > third)
 	rra(a);
-	}
+}
 
 void	sort_five(t_node **a, t_node **b)
 {
@@ -81,4 +81,3 @@ void	sort_five(t_node **a, t_node **b)
 	while (*b)
 		pa(a, b);
 }
-
