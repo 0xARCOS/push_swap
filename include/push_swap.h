@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codex <codex@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 00:00:00 by codex             #+#    #+#             */
+/*   Updated: 2024/06/06 00:00:00 by codex            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -6,9 +17,9 @@
 
 typedef struct s_node
 {
-    int             value;
-    int             index;
-    struct s_node   *next;
+	int		value;
+	int		index;
+	struct s_node		*next;
 } t_node;
 
 t_node  *parse_input(int argc, char **argv);
