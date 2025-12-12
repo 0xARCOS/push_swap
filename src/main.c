@@ -13,6 +13,13 @@
 #include "push_swap.h"
 #include <unistd.h>
 
+/*
+** Verifica si un string contiene solo espacios o tabs
+** Propósito: Detectar argumentos vacíos como "./push_swap '   '"
+** Relación: Función auxiliar de validate_args()
+** Flujo: main() → validate_args() → has_only_spaces()
+** Retorno: 1 si solo tiene espacios/NULL, 0 si tiene contenido
+*/
 static int	has_only_spaces(const char *s)
 {
 	int	i;
@@ -29,6 +36,13 @@ static int	has_only_spaces(const char *s)
 	return (1);
 }
 
+/*
+** Validación inicial de argumentos antes del parsing
+** Verifica: Argumentos no vacíos o solo espacios
+** Relación: Primera validación en main() antes de parse_input()
+** Flujo: main() → validate_args() → has_only_spaces()
+** Retorno: 1 si válidos, 0 si error (imprime "Error\n" a stderr)
+*/
 static int	validate_args(int argc, char **argv)
 {
 	int	i;
@@ -46,6 +60,20 @@ static int	validate_args(int argc, char **argv)
 	return (1);
 }
 
+/*
+** PUNTO DE ENTRADA: Coordina el flujo completo del programa
+** Flujo de ejecución:
+**   1. Validar argumentos (validate_args)
+**   2. Parsear entrada (parse_input) - incluye validación completa
+**   3. Verificar si ya está ordenado (is_sorted) - optimización
+**   4. Ordenar (sort_stack) - selecciona algoritmo según tamaño
+**   5. Liberar memoria (free_stack)
+** Casos especiales:
+**   - Sin argumentos: salida silenciosa
+**   - Argumentos inválidos: imprime "Error" y sale con código 1
+**   - Ya ordenado: salida silenciosa sin operaciones
+** Salida: Imprime secuencia de operaciones (sa, pb, ra, etc.) a stdout
+*/
 int	main(int argc, char **argv)
 {
 	t_node	*stack_a;

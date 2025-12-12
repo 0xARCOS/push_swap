@@ -12,6 +12,14 @@
 
 #include "push_swap.h"
 
+/*
+** Cuenta el número total de tokens en todos los argumentos
+** Propósito: Pre-calcular el tamaño del array para malloc en split_args()
+** Relación: Llamada por split_args() antes de hacer malloc
+** Flujo: split_args() → count_all_tokens() → ft_split()
+** Nota: Hace split de cada argumento para contar (se puede optimizar)
+** Retorno: Número total de tokens, o 0 si error
+*/
 int	count_all_tokens(int argc, char **argv)
 {
 	int		i;
@@ -35,6 +43,14 @@ int	count_all_tokens(int argc, char **argv)
 	return (count);
 }
 
+/*
+** Valida que un string represente un número entero válido
+** Formato aceptado: [+/-]dígitos
+** Rechaza: strings vacíos, solo signo, caracteres no numéricos
+** Relación: Llamada por add_arguments() antes de add_node()
+** Flujo: add_arguments() → is_valid_number() → [retorna bool]
+** Retorno: 1 si es válido, 0 si no es un número válido
+*/
 int	is_valid_number(const char *str)
 {
 	int		i;
@@ -55,6 +71,14 @@ int	is_valid_number(const char *str)
 	return (1);
 }
 
+/*
+** Crea un nuevo nodo a partir de un string numérico
+** Valida rango INT_MIN a INT_MAX en ft_atoi_push_swap
+** Relación: Función auxiliar de add_node()
+** Flujo: add_node() → create_node() → ft_atoi_push_swap()
+** Parámetros: str (string numérico), error (flag de salida)
+** Retorno: Nodo inicializado con index=-1, o NULL si error/overflow
+*/
 static t_node	*create_node(const char *str, int *error)
 {
 	t_node	*new;
@@ -74,23 +98,23 @@ static t_node	*create_node(const char *str, int *error)
 	return (new);
 }
 
+/*
+** OPTIMIZED: Añade un nodo al INICIO del stack (O(1) en lugar de O(n))
+** La lista se construye en orden inverso, se invierte después en parse_input
+** Relación: Llamada por add_arguments() para cada token parseado
+** Flujo: parse_input() → add_arguments() → add_node() → create_node()
+** Optimización: Evita recorrer toda la lista en cada inserción (O(n²) → O(n))
+** Retorno: 1 si éxito, 0 si error de memoria o overflow
+*/
 int	add_node(t_node **stack, const char *str)
 {
 	t_node	*new;
-	t_node	*temp;
 	int		error;
 
 	new = create_node(str, &error);
 	if (!new)
 		return (0);
-	if (!*stack)
-	{
-		*stack = new;
-		return (1);
-	}
-	temp = *stack;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = new;
+	new->next = *stack;
+	*stack = new;
 	return (1);
 }
