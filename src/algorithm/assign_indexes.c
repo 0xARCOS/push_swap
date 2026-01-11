@@ -28,28 +28,53 @@ static int	*stack_to_array(t_node *stack, int size)
 	return (arr);
 }
 
-static void	sort_array(int *arr, int size)
+static void	swap_elements(int *a, int *b)
 {
-	int	i;
-	int	j;
 	int	tmp;
 
-	i = 0;
-	while (i < size - 1)
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+static int	partition(int *arr, int low, int high)
+{
+	int	pivot;
+	int	i;
+	int	j;
+
+	pivot = arr[high];
+	i = low - 1;
+	j = low;
+	while (j < high)
 	{
-		j = i + 1;
-		while (j < size)
+		if (arr[j] < pivot)
 		{
-			if (arr[i] > arr[j])
-			{
-				tmp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = tmp;
-			}
-			j++;
+			i++;
+			swap_elements(&arr[i], &arr[j]);
 		}
-		i++;
+		j++;
 	}
+	swap_elements(&arr[i + 1], &arr[high]);
+	return (i + 1);
+}
+
+static void	quicksort(int *arr, int low, int high)
+{
+	int	pivot_idx;
+
+	if (low < high)
+	{
+		pivot_idx = partition(arr, low, high);
+		quicksort(arr, low, pivot_idx - 1);
+		quicksort(arr, pivot_idx + 1, high);
+	}
+}
+
+static void	sort_array(int *arr, int size)
+{
+	if (size > 1)
+		quicksort(arr, 0, size - 1);
 }
 
 static void	set_indexes(t_node *stack, int *arr, int size)

@@ -12,24 +12,59 @@
 
 #include "push_swap.h"
 
+static void	simple_sort(int *arr, int size)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] > arr[j])
+			{
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 static int	has_duplicates(t_node *stack)
 {
-	t_node	*current;
-	t_node	*runner;
+	int		*arr;
+	int		size;
+	int		i;
+	t_node	*tmp;
 
-	current = stack;
-	while (current)
+	size = 0;
+	tmp = stack;
+	while (tmp && ++size)
+		tmp = tmp->next;
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (1);
+	i = 0;
+	while (stack && i < size)
 	{
-		runner = current->next;
-		while (runner)
-		{
-			if (current->value == runner->value)
-				return (1);
-			runner = runner->next;
-		}
-		current = current->next;
+		arr[i++] = stack->value;
+		stack = stack->next;
 	}
-	return (0);
+	simple_sort(arr, size);
+	i = 0;
+	while (i < size - 1)
+	{
+		if (arr[i] == arr[i + 1])
+			return (free(arr), 1);
+		i++;
+	}
+	return (free(arr), 0);
 }
 
 static int	append_tokens(char **tokens, char **split, int *k)
