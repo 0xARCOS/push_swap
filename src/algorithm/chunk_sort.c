@@ -11,35 +11,6 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static int	find_pos_by_index(t_node *stack, int index)
-{
-	int		pos;
-
-	pos = 0;
-	while (stack)
-	{
-		if (stack->index == index)
-			return (pos);
-		stack = stack->next;
-		pos++;
-	}
-	return (-1);
-}
-
-static int	find_max_index(t_node *stack)
-{
-	int		max;
-
-	max = stack->index;
-	while (stack)
-	{
-		if (stack->index > max)
-			max = stack->index;
-		stack = stack->next;
-	}
-	return (max);
-}
-
 static void	push_chunks(t_node **a, t_node **b, int chunk)
 {
 	int		size;
@@ -71,11 +42,11 @@ static void	push_back(t_node **a, t_node **b)
 	int		max;
 	int		size;
 
+	max = find_max_index(*b);
 	while (*b)
 	{
-		max = find_max_index(*b);
-		pos = find_pos_by_index(*b, max);
 		size = stack_size(*b);
+		pos = find_pos_by_index(*b, max);
 		if (pos <= size / 2)
 			while (pos-- > 0)
 				rb(b);
@@ -83,6 +54,7 @@ static void	push_back(t_node **a, t_node **b)
 			while (pos++ < size)
 				rrb(b);
 		pa(a, b);
+		max--;
 	}
 }
 

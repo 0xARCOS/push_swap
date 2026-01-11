@@ -15,6 +15,10 @@
 # include <stdlib.h>
 # include <limits.h>
 
+# define CHUNK_THRESHOLD 100
+# define CHUNKS_SMALL 5
+# define CHUNKS_LARGE 11
+
 typedef struct s_node
 {
 	int	value;
@@ -55,6 +59,9 @@ void	rotate_nodes(t_node **stack);
 void	reverse_rotate_nodes(t_node **stack);
 
 int	stack_size(t_node *stack);
+int	find_min_pos(t_node *stack);
+int	find_max_index(t_node *stack);
+int	find_pos_by_index(t_node *stack, int index);
 void	assign_indexes(t_node *stack);
 void	sort_three(t_node **a);
 void	sort_five(t_node **a, t_node **b);

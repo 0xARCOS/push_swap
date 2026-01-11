@@ -41,9 +41,9 @@ void	sort_stack(t_node **a, t_node **b)
 	else
 	{
 		assign_indexes(*a);
-		if (size <= 100)
-			chunk_sort(a, b, 5);
+		if (size <= CHUNK_THRESHOLD)
+			chunk_sort(a, b, CHUNKS_SMALL);
 		else
-			chunk_sort(a, b, 11);
+			chunk_sort(a, b, CHUNKS_LARGE);
 	}
 }
